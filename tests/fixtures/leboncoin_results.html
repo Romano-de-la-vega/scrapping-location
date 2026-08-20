@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Fixture synthétique Leboncoin — résultats</title>
+  </head>
+  <body>
+    <!--
+      Fixture hors ligne, construite uniquement autour du pattern documenté
+      a[href*="/ad/locations/"]. Elle ne prétend pas reproduire ni valider le
+      DOM live de Leboncoin (la session de développement a rencontré DataDome).
+    -->
+    <a
+      href="/ad/locations/3252484841?utm_source=fixture&amp;campaign=keep-me#card"
+      aria-label="Appartement 2 pièces lumineux"
+    >
+      Appartement 2 pièces lumineux
+      750 €
+      35 m²
+      Lyon 6e (69006)
+    </a>
+
+    <a href="https://www.leboncoin.fr/ad/locations/3252484999?gclid=test">
+      Studio meublé
+      620 €
+      Lyon 6ème (69006)
+    </a>
+
+    <!-- Le même ID est volontairement présent deux fois dans le DOM. -->
+    <a href="https://www.leboncoin.fr/ad/locations/3252484841?fbclid=duplicate">
+      Appartement 2 pièces lumineux
+      750 €
+      35 m2
+      Lyon 6e (69006)
+    </a>
+
+    <!-- Correspond au sélecteur connu, mais ne porte aucun ID source valide. -->
+    <a href="/ad/locations/not-a-source-id">Candidat invalide</a>
+
+    <!-- Ne doit jamais être pris pour une annonce de location. -->
+    <a href="/ad/ventes/3252485888">Appartement à vendre</a>
+  </body>
+</html>

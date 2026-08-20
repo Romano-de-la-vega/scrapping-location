@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lyon6-watcher"
+version = "0.1.0"
+description = "Watcher immobilier Lyon 6e autonome et déterministe"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "playwright>=1.48,<2",
+    "tzdata>=2024.1; platform_system == 'Windows'",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8,<10",
+]
+
+[project.scripts]
+lyon6-watcher = "watcher.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["watcher*"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+markers = [
+    "live: tests requiring RUN_LIVE_TESTS=1 and network access",
+]

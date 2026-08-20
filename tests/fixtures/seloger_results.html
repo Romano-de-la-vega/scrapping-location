@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Fixture synthétique SeLoger — résultats</title>
+  </head>
+  <body>
+    <!--
+      Fixture hors ligne fondée sur les data-testid observés en production le
+      2026-08-20. Elle couvre les trois formes d'URL observées et ne contient
+      volontairement aucun script ni dépendance réseau.
+    -->
+    <section data-testid="serp-core-scrollablelistview-testid">
+      <div
+        id="classified-card-WLCDP42"
+        data-testid="serp-core-classified-card-testid"
+      >
+        <a
+          data-testid="card-mfe-covering-link-testid"
+          href="/wl-cdp/WLCDP42?utm_source=fixture&amp;offer=keep#photo"
+          aria-label="Appartement 2 pièces lumineux"
+        >Voir l'annonce</a>
+        <p data-testid="cardmfe-price-testid">637 € /mois</p>
+        <p data-testid="cardmfe-keyfacts-testid">2 pièces · 31,88 m²</p>
+        <p data-testid="cardmfe-description-box-address">Lyon 6e (69006)</p>
+        <p data-testid="cardmfe-description-box-text-test-id">
+          Appartement lumineux proche du parc
+        </p>
+      </div>
+
+      <div
+        id="classified-card-ANNONCE9"
+        data-testid="serp-core-classified-card-testid"
+      >
+        <a
+          data-testid="card-mfe-covering-link-testid"
+          href="https://seloger.com/annonce/location/appartement/lyon/ANNONCE9?gclid=fixture"
+          title="T1 à louer"
+        >Voir l'annonce</a>
+        <p data-testid="cardmfe-price-testid">790 € par mois</p>
+        <p data-testid="cardmfe-keyfacts-testid">1 pièce | 40 m2</p>
+        <p data-testid="cardmfe-description-box-address">69006 Lyon</p>
+        <p data-testid="cardmfe-description-box-text-test-id">T1 rénové</p>
+      </div>
+
+      <!-- Sans ID de racine : l'identité doit venir de l'URL historique. -->
+      <div data-testid="serp-core-classified-card-testid">
+        <a
+          data-testid="card-mfe-covering-link-testid"
+          href="/annonces/locations/appartement/lyon-3eme-69/123456789.htm?utm_campaign=fixture"
+        >Voir l'annonce</a>
+        <p data-testid="cardmfe-price-testid">700 € /mois</p>
+        <p data-testid="cardmfe-keyfacts-testid">2 pièces · 35 m²</p>
+        <p data-testid="cardmfe-description-box-address">69003 Lyon 3e</p>
+        <p data-testid="cardmfe-description-box-text-test-id">
+          Appartement hors secteur
+        </p>
+      </div>
+
+      <!-- Doublon DOM volontaire : même ID source, paramètres différents. -->
+      <div
+        id="classified-card-WLCDP42"
+        data-testid="serp-core-classified-card-testid"
+      >
+        <a
+          data-testid="card-mfe-covering-link-testid"
+          href="/wl-cdp/WLCDP42?fbclid=duplicate&amp;offer=keep"
+        >Voir l'annonce</a>
+        <p data-testid="cardmfe-price-testid">637 € /mois</p>
+        <p data-testid="cardmfe-keyfacts-testid">2 pièces · 31,88 m²</p>
+        <p data-testid="cardmfe-description-box-address">Lyon 6e (69006)</p>
+        <p data-testid="cardmfe-description-box-text-test-id">Doublon</p>
+      </div>
+
+      <!-- Candidat principal invalide, utile au diagnostic du parseur. -->
+      <div
+        id="classified-card-not-valid!"
+        data-testid="serp-core-classified-card-testid"
+      >
+        <a
+          data-testid="card-mfe-covering-link-testid"
+          href="https://example.invalid/not-a-listing"
+        >Lien invalide</a>
+        <p data-testid="cardmfe-price-testid">650 €</p>
+      </div>
+
+      <!--
+        Même une carte principale imbriquée dans une carte agrandie doit être
+        exclue par le garde-fou closest(), sans dépendre de sa position.
+      -->
+      <aside data-testid="serp-enlarged-card-testid">
+        <div
+          id="classified-card-ENLARGED1"
+          data-testid="serp-core-classified-card-testid"
+        >
+          <a
+            data-testid="card-mfe-covering-link-testid"
+            href="/wl-cdp/ENLARGED1"
+          >Sponsorisé</a>
+          <p data-testid="cardmfe-price-testid">600 € /mois</p>
+          <p data-testid="cardmfe-keyfacts-testid">2 pièces · 34 m²</p>
+          <p data-testid="cardmfe-description-box-address">69006 Lyon</p>
+          <p data-testid="cardmfe-description-box-text-test-id">
+            Carte agrandie à exclure
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Une carte hors du conteneur de résultats n'est pas une candidate. -->
+    <div
+      id="classified-card-OUTSIDE1"
+      data-testid="serp-core-classified-card-testid"
+    >
+      <a
+        data-testid="card-mfe-covering-link-testid"
+        href="/wl-cdp/OUTSIDE1"
+      >Hors résultats</a>
+    </div>
+  </body>
+</html>

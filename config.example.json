@@ -1,0 +1,47 @@
+{
+  "timezone": "Europe/Paris",
+  "database_path": "data/state.db",
+  "log_path": "data/watcher.log",
+  "lock_path": "data/watcher.lock",
+  "debug_directory": "debug",
+  "debug_artifacts_on_error": true,
+  "browser": {
+    "mode": "launch",
+    "cdp_url": "http://127.0.0.1:9224",
+    "headless": false,
+    "navigation_timeout_ms": 15000,
+    "selector_timeout_ms": 10000,
+    "block_heavy_resources": true
+  },
+  "criteria": {
+    "postal_codes": ["69006"],
+    "price_min": 550,
+    "price_max": 800,
+    "surface_min": 30,
+    "surface_max": 60
+  },
+  "diff": {
+    "missing_threshold": 2,
+    "suspicious_drop_ratio": 0.5,
+    "suspicious_min_previous_count": 2
+  },
+  "scan": {
+    "max_pages_per_site": 1,
+    "max_lazy_scrolls": 3,
+    "navigation_retries": 1
+  },
+  "sites": {
+    "leboncoin": {
+      "enabled": true,
+      "search_url": "https://www.leboncoin.fr/recherche?category=10&locations=Lyon_69006__45.76934_4.85017_2037&real_estate_type=2&price=550-800&square=30-60&sort=time&order=desc"
+    },
+    "seloger": {
+      "enabled": true,
+      "search_url": "https://www.seloger.com/classified-search?distributionTypes=Rent&estateTypes=Apartment&locations=POCOFR4450&locationsInBuildingExcluded=Groundfloor&method=form&numberOfRoomsMax=3&numberOfRoomsMin=1&priceMax=800&priceMin=550&spaceMax=60&spaceMin=30"
+    },
+    "seventee": {
+      "enabled": true,
+      "search_url": "https://candidate.seventee.com/location-appartement-maison.html?rentIncludingCharges.min=550%23RANGE%23%E2%82%AC&rentIncludingCharges.max=800%23RANGE%23%E2%82%AC&locations=%5B%7B%22label%22%3A%22Lyon+6e%22%2C%22name%22%3A%22Lyon%22%2C%22postalCode%22%3A%2269006%22%2C%22inseeCode%22%3A%2269123%22%7D%5D%23MULTI_VALUES&type=APARTMENT%23MULTI_VALUES&type=HOUSE%23MULTI_VALUES&locations=%5B%7B%22label%22%3A%22Lyon+6e%22%2C%22name%22%3A%22Lyon%22%2C%22postalCode%22%3A%2269006%22%2C%22inseeCode%22%3A%2269123%22%7D%5D%23MULTI_VALUES"
+    }
+  }
+}
