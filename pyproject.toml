@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lyon6-watcher"
-version = "0.1.0"
-description = "Watcher immobilier Lyon 6e autonome et déterministe"
+version = "0.2.0"
+description = "Watcher immobilier déterministe avec suivis multi-utilisateurs"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -20,6 +20,7 @@ test = [
 
 [project.scripts]
 lyon6-watcher = "watcher.cli:main"
+property-follow = "watcher.follows:main"
 
 [tool.setuptools.packages.find]
 include = ["watcher*"]
